@@ -1,10 +1,13 @@
 
 const express = require('express');
 const router = express.Router();
+const { loginForm, registerForm, inicio } = require('../controller/userController');
 
+
+router.get('/', inicio) 
 
 router.get('/inicio', (req, res) => {
-    res.send('Hello World desde Inicio!')
+    res.json('Hello World desde Inicio!')
 })
 
 router.get('/nosotros', (req, res) => {
