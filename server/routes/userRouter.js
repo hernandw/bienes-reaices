@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { loginForm, registerForm, inicio } = require('../controller/userController');
+const { loginForm, registerForm, inicio, forgotPassword } = require('../controller/userController');
 
 
 router.get('/', inicio) 

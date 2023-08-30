@@ -7,6 +7,10 @@ const registerForm = (req, res) => {
     
 }
 
+const forgotPassword = (req, res) => {
+    
+}
+
 const inicio = (req, res) => {
     res.json({
         ok: true
@@ -16,5 +20,6 @@ const inicio = (req, res) => {
 module.exports = {
     loginForm,
     registerForm,
-    inicio
+    inicio,
+    forgotPassword
 }

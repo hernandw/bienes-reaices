@@ -30,7 +30,6 @@ const Login = () => {
       <div className="max-w-md mx-auto mt-8">
         <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
           <form onSubmit={handleSubmit} className="space-y-5">
-            
             <div>
               <label
                 htmlFor="email"
@@ -63,12 +62,16 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            
+
             <input
               type="submit"
               className="w-full px-3 py-4 font-bold text-white uppercase bg-blue-500 rounded cursor-pointer hover:bg-blue-700"
               value={"Iniciar Sesión"}
             />
+            <div className="flex items-center justify-between text-xs text-gray">
+              <a href="/register">¿No tienes cuenta? Regístrate </a>
+              <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+            </div>
           </form>
         </div>
       </div>

@@ -69,7 +69,15 @@ const Register = () => {
                 placeholder="Ej. 123456"
               />
             </div>
-            <input type="submit" className="w-full px-3 py-4 font-bold text-white uppercase bg-blue-500 rounded cursor-pointer hover:bg-blue-700" value={"Crear Cuenta"}/>
+            <input
+              type="submit"
+              className="w-full px-3 py-4 font-bold text-white uppercase bg-blue-500 rounded cursor-pointer hover:bg-blue-700"
+              value={"Crear Cuenta"}
+            />
+            <div className="flex items-center justify-between text-xs text-gray">
+              <a href="/login">¿Ya tienes cuenta? Inicia Sesión </a>
+              <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+            </div>
           </form>
         </div>
       </div>
