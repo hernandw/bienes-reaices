@@ -1,9 +1,29 @@
+import { useState } from "react";
+
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const urlBase = "http://localhost:3000";
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('enviando...')
-  }
+    e.preventDefault();
+    try {
+      const body = { name, email, password };
+      fetch(`${urlBase}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      alert("Usuario Registrado con Exito");
+      window.location = "/";
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div>
       <h1 className="my-10 text-2xl font-extrabold text-center">
@@ -25,6 +45,8 @@ const Register = () => {
                 id="name"
                 className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md"
                 placeholder="Ej. José Pérez"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
@@ -39,6 +61,8 @@ const Register = () => {
                 id="email"
                 className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md"
                 placeholder="Ej. joseperez@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
@@ -53,6 +77,8 @@ const Register = () => {
                 id="password"
                 className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md"
                 placeholder="Ej. 123456"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div>
