@@ -1,28 +1,51 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState('')
+
+  const navigate = useNavigate();
 
   const urlBase = "http://localhost:3000";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const body = { name, email, password };
-      fetch(`${urlBase}/register`, {
+      if (name === "" || email === "" || password === "" || password2 === "") {
+        setMessage("Todos los campos son obligatorios");
+        setError(true);
+        return
+      }
+      if (password !== password2) {
+        setMessage("Las contraseñas no coinciden");
+        setError(true);
+        return
+      }
+      await fetch(`${urlBase}/register`, {
         method: "POST",
+
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
       });
-      alert("Usuario Registrado con Exito");
-      window.location = "/";
-    } catch (error) {
-      console.log(error.message);
+      alert("Usuario registrado correctamente");
+      navigate("/login");
+    } catch (err) {
+      console.error(err.message);
+      setMessage(err.message)
+      setError(true)
     }
+    setError(false)
   };
   return (
     <div>
@@ -34,6 +57,11 @@ const Register = () => {
         <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
+              {error && (
+                <p className="p-4 mb-4 font-bold text-center text-white uppercase bg-red-600 rounded-md">
+                  {message}
+                </p>
+              )}
               <label
                 htmlFor="name"
                 className="block text-sm font-bold text-gray-700 uppercase"
@@ -93,6 +121,8 @@ const Register = () => {
                 id="password2"
                 className="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md"
                 placeholder="Ej. 123456"
+                value={password2}
+                onChange={(e) => setPassword2(e.target.value)}
               />
             </div>
             <input

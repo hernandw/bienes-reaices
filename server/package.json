@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:prod": "nodemon index.js ",
-    "dev:dev": "nodemon index.js ",
-    "start": "node index.js",
-    "server": "nodemon index.js"
+    "dev": "nodemon index.js ",
+    "start": " node index.js"
+    
   },
   "keywords": [],
   "author": "Williams Hernandez",
