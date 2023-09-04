@@ -1,0 +1,52 @@
+label {
+  margin-top: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 50px;
+}
+
+.groupInput {
+  position: relative;
+}
+
+.groupInput svg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+}
+.icon{
+  color: white;
+}
+
+.leyenda {
+  color: red;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+}
+
+.valido {
+ 
+  color: black
+}
+
+.not-valido {
+  color: red;
+  
+  
+}
+
+.visible {
+  
+  color: rgb(109, 180, 90);
+}
+
+.not-visible {
+  color: red;
+  
+  
+  
+}
