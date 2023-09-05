@@ -1,26 +1,29 @@
-import { useEffect, useState } from "react"
-
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const urlBase = 'http://localhost:3000'
-
-    const iniciarSesion = async() => {
-      
-
-  }
-  
-  useEffect(() => {
-    iniciarSesion()
-    
-  })
+  const urlBase = "http://localhost:3005";
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('enviando...')
-  }
+    e.preventDefault();
+
+    fetch(`${urlBase}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    
+  };
+
   return (
     <div>
       <h1 className="my-10 text-2xl font-extrabold text-center">
@@ -77,6 +80,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

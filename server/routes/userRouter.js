@@ -1,21 +1,14 @@
 
 const express = require('express');
 const router = express.Router();
-const { loginForm, registerForm,  forgotPassword, getUsers } = require('../controller/userController');
+const { agregarUser, obtenerUsers, verificador } = require('../controller/userController');
 
 
 
+router.post('/register', agregarUser)
 
-router.get('/inicio', (req, res) => {
-    res.json('Hello World desde Inicio!')
-})
+router.get('/users', obtenerUsers)
 
-router.get('/nosotros', (req, res) => {
-    res.send('Hello World desde Nosotros!')
-})
-
-router.post('/register', registerForm)
-
-router.get('/users', getUsers)
+router.post('/login', verificador)
 
 module.exports = router
