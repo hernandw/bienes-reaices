@@ -56,7 +56,7 @@ const Register = () => {
         }),
       });
       alert("Usuario registrado correctamente");
-      navigate("/login");
+      navigate("/email");
     } catch (err) {
       console.error(err.message);
       setMessage(err.message);
